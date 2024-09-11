@@ -1,8 +1,9 @@
-{
+query DevicesQuery {
   InfraDevice {
     edges {
       node {
         id
+        name
       }
     }
   }
