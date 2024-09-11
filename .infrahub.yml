@@ -3,3 +3,5 @@ check_definitions:
   - name: "check_color_tags_name"
     class_name: "ColorTagsCheck"
     file_path: "tags_check.py"
+  - name: "netpicker_api"
+    file_path: "netpicker_api.py"
