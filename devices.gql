@@ -1,0 +1,9 @@
+{
+  InfraDevice {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
