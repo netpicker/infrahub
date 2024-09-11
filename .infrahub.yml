@@ -1,4 +1,4 @@
----
-check_definitions:
-  - name: "netpicker_api"
-    file_path: "./netpicker_api.py"
+# ---
+# check_definitions:
+#   - name: "netpicker_api"
+#     file_path: "./netpicker_api.py"
