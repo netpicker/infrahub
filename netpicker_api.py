@@ -17,4 +17,6 @@ class Check(InfrahubCheck):
         
         # except requests.RequestException as e:
         #     print(f"An error occurred: {e}")
-        print('OK')
+        self.log_error(
+                    message=f"Test error"
+                )
