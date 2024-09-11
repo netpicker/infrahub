@@ -3,6 +3,8 @@ from infrahub_sdk.checks import InfrahubCheck
 
 
 class Check(InfrahubCheck):
+    query = "devices"
+
     def validate(self, data):
         # url = "https://sandbox.netpicker.io/api/v1/auth/info"
         
