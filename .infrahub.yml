@@ -1,5 +1,4 @@
 ---
 check_definitions:
   - name: "netpicker_api"
-    class_name: "NetpickerAPI"
-    file_path: "netpicker_api.py"
+    file_path: "./netpicker_api.py"
