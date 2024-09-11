@@ -5,3 +5,6 @@ check_definitions:
     file_path: "tags_check.py"
   - name: "netpicker_api"
     file_path: "netpicker_api.py"
+  - name: "print_ok"
+    class_name: "PrintOKCheck"
+    file_path: "print_ok.py"
