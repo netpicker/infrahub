@@ -2,7 +2,7 @@ import requests
 from infrahub_sdk.checks import InfrahubCheck
 
 
-class NetpickerAPI(InfrahubCheck)
+class NetpickerAPI(InfrahubCheck):
     def validate():
         url = "https://sandbox.netpicker.io/api/v1/auth/info"
         
