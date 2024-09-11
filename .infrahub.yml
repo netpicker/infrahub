@@ -1,4 +1,5 @@
 ---
 check_definitions:
-  - name: "netpicker_api"
-    file_path: "./netpicker_api.py"
+  - name: "check_color_tags_name"
+    class_name: "ColorTagsCheck"
+    file_path: "tags_check.py"

@@ -1,0 +1,14 @@
+query TagsQuery {
+  BuiltinTag {
+    edges {
+      node {
+        name {
+          value
+        }
+        description {
+          value
+        }
+      }
+    }
+  }
+}
