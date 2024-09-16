@@ -6,8 +6,8 @@ class Check(InfrahubCheck):
     query = "tags_check"
 
     def validate(self, data):
-        login_url = 'http://127.0.0.1/api/v1/auth/jwt/login'
-        info_url = "http://127.0.0.1/api/v1/auth/info"
+        login_url = 'http://opsmill-netpicker.tailc018d.ts.net/api/v1/auth/jwt/login'
+        info_url = "http://opsmill-netpicker.tailc018d.ts.net/api/v1/auth/info"
 
         data = {
             'grant_type': 'password',
