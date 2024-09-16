@@ -16,4 +16,4 @@ class Check(InfrahubCheck):
             self.log_info(message=response.json())
         
         except requests.RequestException as e:
-            self.log_error(message="(f"An error occurred: {e}")
+            self.log_error(message=f"An error occurred: {e}")
