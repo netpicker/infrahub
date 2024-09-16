@@ -12,8 +12,8 @@ class Check(InfrahubCheck):
             response = requests.get(url)
             # response.raise_for_status()
             
-            print("Response from auth/info:")
-            print(response.json())
+            self.log_info(message="Response from auth/info:")
+            self.log_info(message=response.json())
         
         except requests.RequestException as e:
-            print(f"An error occurred: {e}")
+            self.log_error(message="(f"An error occurred: {e}")
