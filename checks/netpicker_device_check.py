@@ -43,7 +43,7 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
                     interface_list: list[str] = []
 
                     # Loop over interfaces attached to that device
-                    for interface in device["interfaces"]:
+                    for interface in device["interfaces"]["edges"]:
                         interface = interface["node"]
 
                         # Here I can access name of my interface
