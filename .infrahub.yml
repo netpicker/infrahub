@@ -8,3 +8,7 @@ check_definitions:
   - name: "print_ok"
     class_name: "PrintOKCheck"
     file_path: "print_ok.py"
+
+queries:
+  - name: tags_check
+    file_path: tags_check.gql
