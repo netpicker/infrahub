@@ -17,7 +17,7 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
 
     def validate(self, data):
         # If there is any device to check
-        if data["InfraDevice"]["count"] < 0:
+        if data["InfraDevice"]["count"] > 0:
             # Start the logic to verify Infrahub data
             try:
                 # Authenticate to Netpicker API
