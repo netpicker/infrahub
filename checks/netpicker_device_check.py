@@ -21,20 +21,20 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
             # Start the logic to verify Infrahub data
             try:
                 # Authenticate to Netpicker API
-                # login_response = requests.post(
-                #     LOGIN_URL, data=LOGIN_CREDENTIALS, verify=False
-                # )
-                # login_response.raise_for_status()
+                login_response = requests.post(
+                    LOGIN_URL, data=LOGIN_CREDENTIALS, verify=False
+                )
+                login_response.raise_for_status()
 
                 # Extract access token from login response
-                # access_token = login_response.json().get("access_token")
+                access_token = login_response.json().get("access_token")
 
-                # if not access_token:
-                #     self.log_error(message="Failed to obtain access token")
-                #     return
+                if not access_token:
+                    self.log_error(message="Failed to obtain access token")
+                    return
 
-                # # Add access token to headers for info request
-                # headers = {"Authorization": f"Bearer {access_token}"}
+                # Add access token to headers for info request
+                headers = {"Authorization": f"Bearer {access_token}"}
 
                 # Loop over devices
                 for device in data["InfraDevice"]["edges"]:
