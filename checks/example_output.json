@@ -1,0 +1,170 @@
+{
+    "data": {
+      "InfraDevice": {
+        "count": 30,
+        "edges": [
+          {
+            "node": {
+              "display_label": "atl1-core1",
+              "id": "17fc2aa1-1e37-ee99-359d-c51ca4177664",
+              "interfaces": {
+                "count": 6,
+                "edges": [
+                  {
+                    "node": {
+                      "name": {
+                        "value": "Loopback0"
+                      },
+                      "speed": {
+                        "value": 1000
+                      },
+                      "mtu": {
+                        "value": 1500
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "loopback"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": {
+                        "value": "MGMT"
+                      },
+                      "speed": {
+                        "value": 1000
+                      },
+                      "mtu": {
+                        "value": 1500
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "management"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": {
+                        "value": "et-0/0/0"
+                      },
+                      "speed": {
+                        "value": 10000
+                      },
+                      "mtu": {
+                        "value": 9216
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "backbone"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": {
+                        "value": "et-0/0/1"
+                      },
+                      "speed": {
+                        "value": 10000
+                      },
+                      "mtu": {
+                        "value": 9216
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "backbone"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": {
+                        "value": "et-0/0/2"
+                      },
+                      "speed": {
+                        "value": 10000
+                      },
+                      "mtu": {
+                        "value": 9216
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "backbone"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": {
+                        "value": "et-0/0/3"
+                      },
+                      "speed": {
+                        "value": 10000
+                      },
+                      "mtu": {
+                        "value": 1500
+                      },
+                      "description": {
+                        "value": null
+                      },
+                      "status": {
+                        "value": "active"
+                      },
+                      "role": {
+                        "value": "server"
+                      },
+                      "enabled": {
+                        "value": true
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }

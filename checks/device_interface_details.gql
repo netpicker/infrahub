@@ -1,0 +1,39 @@
+query DeviceDetails {
+  InfraDevice {
+    count
+    edges {
+      node {
+        display_label
+        id
+        interfaces {
+          count
+          edges {
+            node {
+              name {
+                value
+              }
+              speed {
+                value
+              }
+              mtu {
+                value
+              }
+              description {
+                value
+              }
+              status {
+                value
+              }
+              role {
+                value
+              }
+              enabled {
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
