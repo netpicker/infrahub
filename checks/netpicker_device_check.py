@@ -36,6 +36,41 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
                 # Add access token to headers for info request
                 headers = {"Authorization": f"Bearer {access_token}"}
 
+                # Debug request
+                debug_url = "http://opsmill-netpicker.tailc018d.ts.net/api/v1/policy/default/Infrahub_SDK/debug"
+                debug_headers = {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Authorization': f'Bearer {access_token}',
+                    'Content-Type': 'application/json',
+                }
+                python_code = """
+@medium(
+    name='rule_show_interfaces',
+)
+def rule_show_interfaces(configuration, commands, device):
+    assert configuration == False, 'Message from Netpicker'
+"""
+
+                debug_data = {
+                    "name": "rule_show_interfaces",
+                    "severity": "MEDIUM",
+                    "configuration": "example config here",
+                    #"ipaddress": "cisco_ios",
+                    "command": None,
+                    "ruleset": "default",
+                    "definition": {
+                        "code": python_code
+                    }
+                }
+
+                debug_response = requests.post(debug_url, headers=debug_headers, json=debug_data, verify=False)
+                debug_response.raise_for_status()
+
+                self.log_info(message="Response from debug endpoint:")
+                self.log_info(message=debug_response.json())
+            
+            except requests.RequestException as e:
+                self.log_error(message=f"An error occurred: {e}")
                 # Loop over devices
                 for device in data["InfraDevice"]["edges"]:
                     device = device["node"]
@@ -51,7 +86,6 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
 
                         # ... I can access various other things as mtu, speed, description ...
 
-                    # TODO: Implement Netpicker API call, I guess somewhere here with device & interface data
 
                     # Then can log verious things
                     self.log_info(
