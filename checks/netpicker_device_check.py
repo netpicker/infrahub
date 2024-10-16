@@ -71,6 +71,8 @@ def rule_show_interfaces(configuration, commands, device):
             
             except requests.RequestException as e:
                 self.log_error(message=f"An error occurred: {e}")
+            
+            try:
                 # Loop over devices
                 for device in data["InfraDevice"]["edges"]:
                     device = device["node"]
