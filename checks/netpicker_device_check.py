@@ -20,6 +20,27 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
         if data["InfraDevice"]["count"] > 0:
             # Start the logic to verify Infrahub data
             try:
+                # Search for device labeled 'cisco_ios' in Infrahub
+                infrahub_device = None
+                for edge in data["InfraDevice"]["edges"]:
+                    device = edge["node"]
+                    if device["display_label"] == "cisco_ios":
+                        infrahub_device = device
+                        break
+
+                if infrahub_device is None:
+                    self.log_error(message="No device with label 'cisco_ios' found.")
+                    return
+
+                # Now, you can continue with your processing using `infrahub_device`
+                self.log_info(f"Found device: {infrahub_device['display_label']}")
+
+                # You can now access interfaces or any other details from `infrahub_device`
+                interfaces = [interface["node"]["name"]["value"] for interface in infrahub_device["interfaces"]["edges"]]
+
+                # Log device interface details
+                self.log_info(f"Interfaces: {', '.join(interfaces)}")
+
                 # Authenticate to Netpicker API
                 login_response = requests.post(
                     LOGIN_URL, data=LOGIN_CREDENTIALS, verify=False
@@ -43,7 +64,7 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
                     'Authorization': f'Bearer {access_token}',
                     'Content-Type': 'application/json',
                 }
-                python_code = """
+                python_code = f"""
 @medium(
     name='rule_show_interfaces',
 )
@@ -62,7 +83,7 @@ def rule_show_interfaces(configuration, commands, device):
                 interface_status = 'disabled'
             cli_interfaces[interface_name] = interface_status
     
-    assert False, cli_interfaces
+    assert {interfaces} in cli_interfaces
 """
 
                 debug_data = {
@@ -80,36 +101,8 @@ def rule_show_interfaces(configuration, commands, device):
                 debug_response = requests.post(debug_url, headers=debug_headers, json=debug_data, verify=False)
                 debug_response.raise_for_status()
 
-                #self.log_info(message="Response from debug endpoint:")
-                #self.log_info(message=debug_response.json())
-
-                # Compare interface status of device with data in Infrahub
-                cli_interfaces = debug_response.json()['result']['excinfo']['message']
-
-                # Log cli interface details
-                self.log_info(f"CLI Interfaces: {cli_interfaces}")
-                
-                # Search for device labeled 'cisco_ios' in Infrahub
-                infrahub_device = None
-                for edge in data["InfraDevice"]["edges"]:
-                    device = edge["node"]
-                    if device["display_label"] == "cisco_ios":
-                        infrahub_device = device
-                        break
-
-                if infrahub_device is None:
-                    self.log_error(message="No device with label 'cisco_ios' found.")
-                    return
-
-                # Now, you can continue with your processing using `infrahub_device`
-                self.log_info(f"Found device: {infrahub_device['display_label']}")
-
-                # You can now access interfaces or any other details from `infrahub_device`
-                interfaces = [interface["node"]["name"]["value"] for interface in infrahub_device["interfaces"]["edges"]]
-
-                # Log device interface details
-                self.log_info(f"Interfaces: {', '.join(interfaces)}")
-                
+                self.log_info(message="Response from debug endpoint:")
+                self.log_info(message=debug_response.json())                
             
             except requests.RequestException as e:
                 self.log_error(message=f"An error occurred: {e}")
