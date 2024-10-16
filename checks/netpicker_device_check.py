@@ -84,7 +84,7 @@ def rule_show_interfaces(configuration, commands, device):
                 self.log_info(message=debug_response.json())
 
                 # Compare interface status of device with data in Infrahub
-                cli_interfaces = debug_response.json()['result']['execinfo']['message']
+                cli_interfaces = debug_response.json()['result']['excinfo']['message']
 
                 # Log cli interface details
                 self.log_info(f"CLI Interfaces: {', '.join(interfaces)}")
