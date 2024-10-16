@@ -83,7 +83,7 @@ def rule_show_interfaces(configuration, commands, device):
                 interface_status = 'disabled'
             cli_interfaces[interface_name] = interface_status
     
-    assert {interfaces} in cli_interfaces
+    assert "{interfaces}" in cli_interfaces
 """
 
                 debug_data = {
