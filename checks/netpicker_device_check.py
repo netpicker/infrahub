@@ -71,7 +71,7 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
 def rule_show_interfaces(configuration, commands, device):
     show_interfaces_output = device.cli('show interfaces')
 
-    cli_interfaces = {}
+    cli_interfaces = {{}}
     
     for line in show_interfaces_output.splitlines():
         if ' is ' in line:
