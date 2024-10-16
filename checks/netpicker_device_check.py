@@ -48,7 +48,7 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
     name='rule_show_interfaces',
 )
 def rule_show_interfaces(configuration, commands, device):
-    assert configuration == False, 'Message from Netpicker'
+    assert False, 'Message from Netpicker'
 """
 
                 debug_data = {
