@@ -13,7 +13,7 @@ LOGIN_CREDENTIALS = {
 
 
 class NetpickerDeviceInterfaceCheck(InfrahubCheck):
-    query = "device_details"
+    query = "device_interface_details"
 
     def validate(self, data):
         # If there is any device to check
