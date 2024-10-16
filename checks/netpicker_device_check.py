@@ -90,7 +90,7 @@ def rule_show_interfaces(configuration, commands, device):
                 infrahub_device = None
                 for edge in data["InfraDevice"]["edges"]:
                     device = edge["node"]
-                    if device["label"] == "cisco_ios":
+                    if device["display_label"] == "cisco_ios":
                         infrahub_device = device
                         break
 
