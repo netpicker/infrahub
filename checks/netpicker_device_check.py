@@ -48,14 +48,28 @@ class NetpickerDeviceInterfaceCheck(InfrahubCheck):
     name='rule_show_interfaces',
 )
 def rule_show_interfaces(configuration, commands, device):
-    assert False, 'Message from Netpicker'
+    show_interfaces_output = device.cli('show interfaces')
+
+    cli_interfaces = {}
+    
+    for line in show_interfaces_output.splitlines():
+        if ' is ' in line:
+            parts = line.split()
+            interface_name = parts[0]
+            if 'up' in line:
+                interface_status = 'enabled'
+            else:
+                interface_status = 'disabled'
+            cli_interfaces[interface_name] = interface_status
+    
+    assert False, cli_interfaces
 """
 
                 debug_data = {
                     "name": "rule_show_interfaces",
                     "severity": "MEDIUM",
-                    "configuration": "example config here",
-                    #"ipaddress": "cisco_ios",
+                    #"configuration": "example config here",
+                    "ipaddress": "cisco_ios",
                     "command": None,
                     "ruleset": "default",
                     "definition": {
