@@ -82,6 +82,32 @@ def rule_show_interfaces(configuration, commands, device):
 
                 self.log_info(message="Response from debug endpoint:")
                 self.log_info(message=debug_response.json())
+
+                # Compare interface status of device with data in Infrahub
+                import json
+                cli_interfaces = json.loads(debug_response.json())
+                
+                # Search for device labeled 'cisco_ios' in Infrahub
+                infrahub_device = None
+                for edge in data["InfraDevice"]["edges"]:
+                    device = edge["node"]
+                    if device["label"] == "cisco_ios":
+                        infrahub_device = device
+                        break
+
+                if infrahub_device is None:
+                    self.log_error(message="No device with label 'cisco_ios' found.")
+                    return
+
+                # Now, you can continue with your processing using `infrahub_device`
+                self.log_info(f"Found device: {infrahub_device['display_label']}")
+
+                # You can now access interfaces or any other details from `infrahub_device`
+                interfaces = [interface["node"]["name"]["value"] for interface in infrahub_device["interfaces"]["edges"]]
+
+                # Log device interface details
+                self.log_info(f"Interfaces: {', '.join(interfaces)}")
+                
             
             except requests.RequestException as e:
                 self.log_error(message=f"An error occurred: {e}")
