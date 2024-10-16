@@ -3,17 +3,7 @@ check_definitions:
   - name: "netpicker_device_check"
     class_name: "NetpickerDeviceInterfaceCheck"
     file_path: "checks/netpicker_device_check.py"
-  # - name: "check_color_tags_name"
-  #   class_name: "ColorTagsCheck"
-  #   file_path: "tags_check.py"
-  # - name: "netpicker_api"
-  #   file_path: "netpicker_api.py"
-  # - name: "print_ok"
-  #   class_name: "PrintOKCheck"
-  #   file_path: "print_ok.py"
 
 queries:
-  - name: "device_details"
+  - name: "device_interface_details"
     file_path: "checks/device_interface_details.gql"
-  # - name: tags_check
-  #   file_path: tags_check.gql
