@@ -80,14 +80,14 @@ def rule_show_interfaces(configuration, commands, device):
                 debug_response = requests.post(debug_url, headers=debug_headers, json=debug_data, verify=False)
                 debug_response.raise_for_status()
 
-                self.log_info(message="Response from debug endpoint:")
-                self.log_info(message=debug_response.json())
+                #self.log_info(message="Response from debug endpoint:")
+                #self.log_info(message=debug_response.json())
 
                 # Compare interface status of device with data in Infrahub
                 cli_interfaces = debug_response.json()['result']['excinfo']['message']
 
                 # Log cli interface details
-                self.log_info(f"CLI Interfaces: {', '.join(cli_interfaces)}")
+                self.log_info(f"CLI Interfaces: {cli_interfaces}")
                 
                 # Search for device labeled 'cisco_ios' in Infrahub
                 infrahub_device = None
